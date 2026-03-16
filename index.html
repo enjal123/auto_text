@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoText</title>
+    <link rel="stylesheet" href="/frontend/style.css">
+    <link rel="script" href="/backend/server.js">
+    <script type="module" src="/frontend/script.js"></script>
+
+</head>
+
+<body>
+    <div class="login-container">
+        <form id ="loginForm" action="">
+            <p>Welcome to AutoText</p>
+            <h2>Log in</h2>
+
+            <div class="input-box">
+                <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                <input type="email" required id="userEmail" placeholder="Username">
+                <label>Email</label>
+            </div>
+
+            <div class="input-box">
+                <span class="icon"></span>
+                <input type="password" required id="userPassword" placeholder="Password">
+                <label>Password</label>
+            </div>
+            <button type="submit" class="btn">Log in</button>
+        </form>
+
+        <form id="signUpForm" action="">
+            <p>Welcome to AutoText</p>
+            <h2>Sign Up</h2>
+
+            <div class="input-box">
+                <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                <input type="email" required id="emailInput" placeholder="Username">
+                <label>Email</label>
+            </div>
+
+            <div class="input-box">
+                <span class="icon"></span>
+                <input type="password" required id="passwordInput" placeholder="Password">
+                <label>Password</label>
+            </div>
+            <button type="submit" class="btn">Sign Up</button>
+        </form>
+    </div>
+</body>
+</html>
