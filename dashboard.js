@@ -34,8 +34,8 @@ onAuthStateChanged(auth, (user) => {
 
 document.getElementById("saveBtn").addEventListener("click", async () => {
 
-    const cities = document.getElementById("cityInput").value.split(",");
-    const countries = document.getElementById("countryInput").value.split(",");
+    const cities = document.getElementById("cityInput").value.split(",").map(c => c.trim());
+    const countries = document.getElementById("countryInput").value.split(",").map(c => c.trim());
     const telegramId = document.getElementById("telegramInput").value;
 
     if(!currentUser){
