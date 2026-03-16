@@ -1,6 +1,5 @@
 name: Daily AutoText Update
 
-# Trigger manually or on schedule
 on:
   schedule:
     # Runs at 9:50 PM Pacific (4:50 AM UTC)
@@ -12,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Checkout your repository
+      # 1️⃣ Checkout your repo
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -26,7 +25,7 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      # 4️⃣ Write Firebase service account from Base64
+      # 4️⃣ Decode Firebase key and write to file
       - name: Write Firebase Key from Base64
         run: echo "$FIREBASE_KEY_B64" | base64 --decode > serviceAccountKey.json
         env:
