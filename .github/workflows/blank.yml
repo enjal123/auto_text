@@ -2,9 +2,9 @@ name: Daily AutoText Update
 
 on:
   schedule:
-    # 15:00 UTC is 8:00 AM PST. Adjust this for your local time!
+    # Runs at 9:50 PM Pacific (4:50 AM UTC)
     - cron: "50 4 * * *"
-  workflow_dispatch: # Allows you to click "Run workflow" manually
+  workflow_dispatch: 
 
 jobs:
   run-script:
@@ -24,13 +24,15 @@ jobs:
           pip install -r requirements.txt
 
       - name: Create Service Account File
-        # This takes the secret you named FIREBASE_KEY and turns it back into a file
-        run: echo "${{ secrets.FIREBASE_KEY }}" > serviceAccountKey.json
+        # This 'cat' method preserves the exact formatting of your JSON secret
+        run: |
+          cat <<EOF > serviceAccountKey.json
+          ${{ secrets.FIREBASE_KEY }}
+          EOF
 
       - name: Run script
         run: python main.py
         env:
-          # This connects your GitHub Secrets to your code
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           OPENWEATHER_API_KEY: ${{ secrets.OPENWEATHER_API_KEY }}
           NEWS_API_KEY: ${{ secrets.NEWS_API_KEY }}
