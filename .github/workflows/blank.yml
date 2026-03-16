@@ -2,8 +2,9 @@ name: Daily AutoText Update
 
 on:
   schedule:
-  - cron: "30 13 * * *"
-  workflow_dispatch:
+    # 6:30 AM PT (1:30 PM UTC) to account for GitHub delays
+    - cron: "30 13 * * *"
+  workflow_dispatch: 
 
 jobs:
   run-script:
@@ -16,16 +17,18 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: "3.10"
 
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Create Firebase Service Account File
+      - name: Create Service Account File
+        # Using 'EOF' ensures the JSON quotes aren't stripped away
         run: |
-          echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}' > serviceAccountKey.json
+          cat <<'EOF' > serviceAccountKey.json
+          ${{ secrets.FIREBASE_KEY }}
+          EOF
 
       - name: Run script
         run: python main.py
