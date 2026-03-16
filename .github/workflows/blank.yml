@@ -3,7 +3,7 @@ name: Daily AutoText Update
 on:
   schedule:
     # 15:00 UTC is 8:00 AM PST. Adjust this for your local time!
-    - cron: "0 15 * * *"
+    - cron: "50 4 * * *"
   workflow_dispatch: # Allows you to click "Run workflow" manually
 
 jobs:
