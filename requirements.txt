@@ -1,0 +1,6 @@
+firebase-admin
+requests
+pyowm
+geopy
+newsapi-python
+newsdataapi
