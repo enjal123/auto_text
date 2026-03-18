@@ -10,7 +10,7 @@ firebase_admin.initialize_app(cred)
 db = firestore.client()
 
 def send_to_telegram(chat_id, message): 
-    BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+    BOT_TOKEN = os.getenv("TELEGRAM_API")
     url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
     
     payload = {
