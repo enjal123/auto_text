@@ -33,7 +33,7 @@ def send_all_updates():
 
         weather_info = ""
         for city in cities:
-            weather_info += weather_report(city) + "\n"
+            weather_info += weather_report(city) +"\n"
             
         news_info = news_report(countries)
         
