@@ -11,6 +11,7 @@ db = firestore.client()
 
 def send_to_telegram(chat_id, message): 
     BOT_TOKEN = os.getenv("TELEGRAM_API")
+    chat_id = os.getenv("TELEGRAM")
     url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
     
     payload = {
