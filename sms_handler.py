@@ -11,7 +11,7 @@ def send_sms(city):
     full_message = f"Daily Update\n\n{current_weather}\n\n{current_news}"
 
     API = os.getenv("TELEGRAM_API")
-    ID = os.getenv("TELEGRAM_ID")
+    ID = os.getenv("TELEGRAM")
     url = f"https://api.telegram.org/bot{API}/sendMessage"
 
     payload = {
