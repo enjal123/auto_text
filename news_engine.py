@@ -17,7 +17,6 @@ def news_report(countries):
 
         articles_added = 0
 
-        # -------- TRY NEWSAPI FIRST --------
         try:
             response = news_client.get_top_headlines(
                 q=country,
@@ -39,7 +38,6 @@ def news_report(countries):
             print(f"NewsAPI error for {country}: {e}")
 
 
-        # -------- FALLBACK TO NEWSDATAAPI --------
         if articles_added == 0:
             try:
                 response = global_client.latest_api(
