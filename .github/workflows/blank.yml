@@ -11,26 +11,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Checkout code
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2️⃣ Setup Python
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.10"
 
-      # 3️⃣ Install dependencies
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      # 4️⃣ Write service account key from secret
-      - name: Create Service Account File
-        run: echo "${{ secrets.FIREBASE_KEY }}" > serviceAccountKey.json
+      # Write the Firebase service account JSON safely
+      - name: Create Firebase Service Account file
+        run: |
+          echo "${{ secrets.FIREBASE_KEY }}" > serviceAccountKey.json
+        shell: bash
 
-      # 5️⃣ Run your Python script
-      - name: Run main.py
+      - name: Run Python script
         run: python main.py
         env:
           TELEGRAM_API: ${{ secrets.TELEGRAM_API }}
