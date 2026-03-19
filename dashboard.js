@@ -24,22 +24,41 @@ const auth = getAuth(app);
 
 let currentUser = null;
 
+
 onAuthStateChanged(auth, (user) => {
     if(user){
         currentUser = user;
     } else{
-        window.location.href = "login.html";
+        window.location.href = "index.html";
     }
 });
 
+function showAlert(message) {
+        const alertBox = document.getElementById('customAlert');
+        const alertMessage = document.getElementById('alertMessage')
+
+        alertMessage.textContent = message;
+        alertBox.classList.remove('hidden');
+
+        setTimeout(() => {
+            alertBox.classList.add('hidden');
+        }, 3000);
+
+    }
 document.getElementById("saveBtn").addEventListener("click", async () => {
 
-    const cities = document.getElementById("cityInput").value.split(",").map(c => c.trim());
-    const countries = document.getElementById("countryInput").value.split(",").map(c => c.trim());
-    const telegramId = document.getElementById("telegramInput").value;
+    const telegramId = document.getElementById("telegramInput").value.trim();
+    const cityInput = document.getElementById("cityInput").value.trim();
+    const countryInput = document.getElementById('countryInput').value.trim();
+    
+    if(!telegramId || !countryInput || !cityInput){
+        showAlert("Please fill out all fields before saving!")
+        return;
+    }
 
-    if(!currentUser){
-        alert("User not logged in");
+    const cities = cityInput.split(",").map(c => c.trim()).filter(c => c);
+    const countries = countryInput.split(",").map(c => c.trim()).filter(c => c);    if(!currentUser){
+        showAlert("User not logged in");
         return;
     }
 
@@ -48,8 +67,8 @@ document.getElementById("saveBtn").addEventListener("click", async () => {
         countries: countries,
         telegramId: telegramId,
         createdAt: new Date()
-
     });
 
-    alert("Preferences saved!");
+    
+    showAlert("Preferences saved!");
 });
