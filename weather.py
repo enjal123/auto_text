@@ -4,7 +4,7 @@ import datetime
 import os 
 
 def weather_report(user_location):
-    api_key = os.getenv("OPENWEATHER_API_KEY")
+    api_key = os.getenv("WEATHER_API_KEY")
 
     if not api_key:
         return "❌ Missing weather API key."
