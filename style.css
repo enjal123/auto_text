@@ -1,10 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
 
-.login-container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: center;
-    line-height: 1.6;
-    text-align: center;
+@font-face {
+    font-family: 'Custom';
+    src: url('main_font.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
 
+body {
+    background-color: #0f1014;
+    font-family: 'Inter', 'Custom', sans-serif;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.login-container, .container {
+    max-width: 400px;
+    width: 100%;
+    margin: 20px auto;
+    padding: 40px;
+    text-align: center;
+    background: #1a1b23;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.title, h1 {
+    font-family: 'Custom', sans-serif;
+    color: #ff4d4d;
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-weight: 300;
+    font-size: 1.2rem;
+    color: #a0a0a0;
+    margin-top: 30px;
+}
+
+p {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+.input-box {
+    position: relative;
+    margin: 20px 0;
+    text-align: left;
+}
+
+input {
+    width: 100%;
+    padding: 12px 0;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #333;
+    color: white;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    border-bottom-color: #ff4d4d;
+}
+
+input::placeholder {
+    color: #444;
+}
+
+label {
+    display: block;
+    font-size: 0.75rem;
+    color: #ff4d4d;
+    text-transform: uppercase;
+    margin-top: 5px;
+}
+
+button, .btn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    background: #ff4d4d;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+#signUpForm {
+    margin-top: 40px;
+    border-top: 1px solid #222;
+    padding-top: 40px;
+}
+
+.alert{
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9990;
+    background: #333;
+    color: white;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-family: sans-serif;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: opacity 0.3s ease;
+}
+
+.hidden{
+    z-index: 9990;
+    opacity: 0;
+    pointer-events: none;
 }
