@@ -1,37 +1,22 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-
-import { 
-getFirestore, doc, setDoc 
-} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-
-import { 
-getAuth, onAuthStateChanged 
-} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-
-
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+// https://firebase.google.com/docs/web/setup#available-libraries
 const firebaseConfig = {
-apiKey: "AIzaSyBDPm8SdvGnocloHltybBFsO2XaVpKw_3Y",
-authDomain: "autotext-b2e7f.firebaseapp.com",
-projectId: "autotext-b2e7f",
-storageBucket: "autotext-b2e7f.firebasestorage.app",
-messagingSenderId: "51139756433",
-appId: "1:51139756433:web:05a60566abaf6993875a30"
+  apiKey: "AIzaSyBDPm8SdvGnocloHltybBFsO2XaVpKw_3Y",
+  authDomain: "autotext-b2e7f.firebaseapp.com",
+  projectId: "autotext-b2e7f",
+  storageBucket: "autotext-b2e7f.firebasestorage.app",
+  messagingSenderId: "51139756433",
+  appId: "1:51139756433:web:05a60566abaf6993875a30",
+  measurementId: "G-Y7CDESP4N0"
 };
 
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
 const auth = getAuth(app);
 
-let currentUser = null;
+const loginForm = document.getElementById("loginForm");
 
-
-onAuthStateChanged(auth, (user) => {
-    if(user){
-        currentUser = user;
-    } else{
-        window.location.href = "index.html";
-    }
-});
 
 function showAlert(message) {
         const alertBox = document.getElementById('customAlert');
@@ -45,30 +30,43 @@ function showAlert(message) {
         }, 3000);
 
     }
-document.getElementById("saveBtn").addEventListener("click", async () => {
 
-    const telegramId = document.getElementById("telegramInput").value.trim();
-    const cityInput = document.getElementById("cityInput").value.trim();
-    const countryInput = document.getElementById('countryInput').value.trim();
-    
-    if(!telegramId || !countryInput || !cityInput){
+loginForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const email = document.getElementById("userEmail").value;
+    const password = document.getElementById("userPassword").value;
+
+    if(!email || !password){
         showAlert("Please fill out all fields before saving!")
         return;
     }
-
-    const cities = cityInput.split(",").map(c => c.trim()).filter(c => c);
-    const countries = countryInput.split(",").map(c => c.trim()).filter(c => c);    if(!currentUser){
-        showAlert("User not logged in");
-        return;
+    try{
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        showAlert("Logged In!")
+        setTimeout(() =>{
+            window.location.href = "dashboard.html";
+        }, 1500);
+        
+    } catch (error){
+        showAlert("Login Failed!")
     }
 
-    await setDoc(doc(db, "users", currentUser.uid), {
-        cities: cities,
-        countries: countries,
-        telegramId: telegramId,
-        createdAt: new Date()
-    });
-
-    
-    showAlert("Preferences saved!");
 });
+
+const signUpForm = document.getElementById("signUpForm");
+
+signUpForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    
+    const email = document.getElementById("emailInput").value;
+    const password = document.getElementById("passwordInput").value;
+
+    try{
+        await createUserWithEmailAndPassword(auth, email, password);
+        showAlert("Account Created!");
+    } catch (error){
+        showAlert("Sign Up Failed!" + error.message);
+    }
+})
+
