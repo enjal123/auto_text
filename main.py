@@ -16,7 +16,7 @@ def send_to_telegram(chat_id, message):
     BOT_TOKEN = os.getenv("TELEGRAM_API")
 
     if not BOT_TOKEN:
-        print("TELEGRAM_API is missing!")
+        print("❌ TELEGRAM_API is missing!")
         return
 
     url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
