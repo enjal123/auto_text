@@ -2,10 +2,15 @@ from pyowm import OWM
 from geopy.geocoders import ArcGIS
 import datetime
 import os 
+
 def weather_report(user_location):
-    api_key = os.getenv("WEATHER_API_KEY")
+    api_key = os.getenv("OPENWEATHER_API_KEY")
+
+    if not api_key:
+        return "❌ Missing weather API key."
+
     owm = OWM(api_key)
-    geolocator = ArcGIS()
+    geolocator = ArcGIS(timeout=10)
 
     if user_location:
         location = geolocator.geocode(user_location)
@@ -23,8 +28,6 @@ def weather_report(user_location):
             rain_volume = w.rain.get('1h', 0)
             wind_speed = w.wind().get('speed', 0)
         
-            clouds = w.clouds
-            visibility = w.visibility_distance
             sunrise = datetime.datetime.fromtimestamp(w.sunrise_time()).strftime('%I:%M %p')
             sunset = datetime.datetime.fromtimestamp(w.sunset_time()).strftime('%I:%M %p')
 
@@ -46,4 +49,3 @@ def weather_report(user_location):
             return report
             
     return "❌ Error: Could not find that location."
-
