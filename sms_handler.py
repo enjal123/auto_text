@@ -11,7 +11,7 @@ def send_sms(city):
     full_message = f"Daily Update\n\n{current_weather}\n\n{current_news}"
 
     API = "8734080949:AAGuLH55fVJY6hyd9Zy7lCGr5u7-u4NCxiw"
-    ID = 8589781892
+    ID = "8589781892"
     url = f"https://api.telegram.org/bot{API}/sendMessage"
 
     payload = {
