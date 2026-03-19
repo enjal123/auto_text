@@ -2,8 +2,7 @@ name: Daily AutoText Update
 
 on:
   schedule:
-    # 6:30 AM PT (1:30 PM UTC)
-    - cron: "40 20 * * *"
+    - cron: "0 13 * * *"
   workflow_dispatch:
 
 jobs:
