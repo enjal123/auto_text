@@ -38,6 +38,4 @@ jobs:
           TELEGRAM: ${{ secrets.TELEGRAM }}
           WEATHER_API_KEY: ${{ secrets.WEATHER_API_KEY }}
           NEWS_API_KEY: ${{ secrets.NEWS_API_KEY }}
-          FIREBASE_KEY: ${{ secrets.FIREBASE_KEY }}
-          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
           NEWSDATA_API_KEY: ${{ secrets.NEWSDATA_API_KEY }}
