@@ -9,8 +9,7 @@ print("Initializing Firebase...")
 
 cred = credentials.Certificate("serviceAccountKey.json")
 firebase_admin.initialize_app(cred)
-db = firestore.client(project="autotext-b2e7f")
-
+db = firestore.client()
 print("Firebase initialized.")
 
 def send_to_telegram(chat_id, message): 
