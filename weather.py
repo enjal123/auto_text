@@ -3,7 +3,7 @@ from geopy.geocoders import ArcGIS
 import datetime
 import os 
 def weather_report(user_location):
-    api_key = os.getenv("OPENWEATHER_API_KEY")
+    api_key = os.getenv("WEATHER_API_KEY")
     owm = OWM(api_key)
     geolocator = ArcGIS()
 
