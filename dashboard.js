@@ -66,7 +66,7 @@ signUpForm.addEventListener("submit", async (e) => {
         await createUserWithEmailAndPassword(auth, email, password);
         showAlert("Account Created!");
     } catch (error){
-        showAlert("Sign Up Failed!" + error.message);
+        showAlert("Sign Up Failed!");
     }
 })
 
