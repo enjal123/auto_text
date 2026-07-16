@@ -18,7 +18,7 @@ Sign up on the website with your name, the cities you care about, and the countr
    - Sends it all as one neat message to their **Telegram**
 4. You open Telegram and there's your daily update, waiting for you. ☀️📰
 
-<img width="800" height="610" alt="image" src="https://github.com/user-attachments/assets/b858fb71-323b-4c63-ada8-bea32904bf24" />
+<img width="800" height="610" alt="ezgif-7440c946706ad8ff" src="https://github.com/user-attachments/assets/777e39e4-8354-4f56-9d55-8d5f4fbaae1b" />
 
 ---
 
