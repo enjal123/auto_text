@@ -115,6 +115,9 @@ To send yourself a quick one-off test update:
 python sms_handler.py
 ```
 
+<img width="400" height="865" alt="ezgif-60d445e24578fb42" src="https://github.com/user-attachments/assets/9e94e0df-d705-4042-828b-800fd33d9834" />
+
+
 ### 8. Automate it (optional)
 
 The `.github/workflows` folder is already set up so `main.py` can run automatically on a schedule using GitHub Actions — so once it's configured, everyone gets their update every morning without you lifting a finger. Just make sure your `TELEGRAM_API` and Firebase credentials are added as **repository secrets**.
